@@ -1,0 +1,182 @@
+#include <stdio.h>
+#include <string.h>
+
+// FUNÇÃO PARA IMPRIMIR O RESULTADO DA COMPARAÇÃO
+void imprimir_comparacao(const char *atributo, int resultado) {
+    printf("%s: Carta %d venceu (%d)\n", atributo, (resultado == 1) ? 1 : 2, resultado);
+}
+
+int main(){
+// DEFININDO AS VARIAVEIS PARA PRIMEIRA CARTA
+char estado1[50];
+char codigo1[50];
+char nome_cidade1[50];
+unsigned long populacao1;
+float area1;
+float pib1;
+int pontos_turisticos;
+float densidade1;
+float pib_per_capita1;
+float super_Poder1;
+
+
+
+
+//SOLICITANDO OS DADOS DA PRIMEIRA CARTA
+printf("DESAFIO CARTAS SUPER TRUNFO\n");
+printf("--- CARTA 1 ---\n");
+printf("Digite o estado:");
+scanf("%s", &estado1);
+
+printf("Digite o codigo da carta:"); //Codigo sera a primeira letra do estado + digito (01 á 04)
+scanf("%s", &codigo1);
+
+printf("Digite o nome da cidade:");
+scanf("%s", &nome_cidade1);
+
+printf("Digite o numero da populacao:"); //Valor sem pontos ou virgulas
+scanf("%lu", &populacao1);
+
+printf("Digite a area em (em km2):");
+scanf("%f", &area1);
+
+printf("Digite o PIB (em bilhoes de reais):");
+scanf("%f", &pib1);
+
+printf("Digite o numero de pontos turisticos:");
+scanf("%u", &pontos_turisticos);
+
+printf("Densidade populacional(Em Hab/km2): %.2f\n", (populacao1 / area1));
+
+printf("PIB Per capita: %.2f\n", (populacao1 / pib1));
+
+
+densidade1 = populacao1 / area1;
+pib_per_capita1 = (float)pib1 / populacao1;
+
+// CALCULO DO SUPER PODER 1
+super_Poder1 = populacao1 + area1 + pib1 + pib_per_capita1 + (1.0f / densidade1);
+
+// DEFININDO AS VARIAVEIS PARA SEGUNDA CARTA
+char estado2[50];
+char codigo2[50];
+char nome_cidade2[50];
+unsigned long populacao2;
+float area2;
+float pib2;
+int pontos_turisticos2;
+float densidade2;
+float pib_per_capita2;
+float super_Poder2;
+
+//SOLICITANDO OS DADOS DA SEGUNDA CARTA.
+printf( "--- CARTA 2 ---\n" );
+printf( "Digite o estado: ");
+scanf("%s", &estado2 );
+
+printf( "Digite o codigo da carta:" ); //Codigo sera a primeira letra do estado + digito (01 á 04).
+scanf( "%s", codigo2);
+
+printf("Digite o nome da cidade:");
+scanf("%s", nome_cidade2 );
+
+printf( " Digite o numero da populacao: " ); //Valor sem pontos ou virgulas.
+scanf("%lu", &populacao2 );
+
+printf("Digite a area em (em km2): " );
+scanf("%f", &area2 );
+
+printf( "Digite o PIB (em bilhoes de reais ): " );
+scanf("%f", &pib2 );
+
+printf("Digite o numero de pontos turisticos: " );
+scanf("%u", &pontos_turisticos2 );
+
+printf("Densidade populacional(Em Hab/km2): %.2f\n", (populacao2 / area2));
+
+printf("PIB Per capita: %.2f\n", (populacao2 / pib2));
+
+densidade2 = populacao2 / area2;
+pib_per_capita2 = (float)pib2 / populacao2;
+
+//CALCULO DE SUPER PODER 2
+
+super_Poder2 = populacao2 + area2 + pib2 + pib_per_capita2 + (1.0f / densidade2);
+
+// EXIBINDO OS DADOS DA PRIMEIRA CARTA
+printf("\n--- Carta 1 ---\n");
+printf("Estado: %s\n" , estado1);
+printf("Codigo: %s\n" , codigo1);
+printf("Nome da Cidade: %s\n" , nome_cidade1);
+printf("Populacao: %d\n" , populacao1);
+printf("Area: %.2f km2\n" , area1);
+printf("PIB: %.2f bilhoes de reais\n" , pib1);
+printf("Numeros de pontos turisticos: %u\n" , pontos_turisticos);
+printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
+printf("PIB per Capita: %.2f reais\n", pib_per_capita1);
+printf("Super Poder: %.2f\n", super_Poder1);
+
+// EXIBINDO OS DADOS DA SEGUNDA CARTA
+printf("\n--- Carta 2 ---\n");
+printf("Estado: %s\n" , estado2);
+printf("Codigo: %s\n" , codigo2);
+printf("Nome da Cidade: %s\n" , nome_cidade2);
+printf("Populacao: %d\n" , populacao2);
+printf("Area: %.2f km2\n" , area2);
+printf("PIB: %.2f bilhoes de reais\n" , pib2);
+printf("Numeros de pontos turisticos: %u\n" , pontos_turisticos2);
+printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+printf("PIB per Capita: %.2f reais\n", pib_per_capita2);
+printf("Super Poder: %.2f\n", super_Poder2);
+
+
+printf("\n--- Batalha de Cartas ---\n");
+    
+    // --- Comparacao dos Atributos ---
+    printf("\nComparacao de Cartas:\n");
+
+    // Populacao (maior vence)
+    imprimir_comparacao("Populacao", (populacao1 > populacao2));
+
+    // Area (maior vence)
+    imprimir_comparacao("Area", (area1 > area2));
+    
+    // PIB (maior vence)
+    imprimir_comparacao("PIB", (pib1 > pib2));
+
+    // Pontos Turisticos (maior vence)
+    imprimir_comparacao("Pontos Turisticos", (pontos_turisticos> pontos_turisticos2));
+    
+    // Densidade Populacional (MENOR vence)
+    imprimir_comparacao("Densidade Populacional", (densidade1< densidade2));
+    
+    // PIB per Capita (maior vence)
+    imprimir_comparacao("PIB per Capita", (pib_per_capita1 > pib_per_capita2));
+    
+    // Super Poder (maior vence)
+    imprimir_comparacao("Super Poder", (super_Poder1 > super_Poder2));
+
+    if (populacao1 < populacao2)
+    {
+        printf("Cidade 1 tem maior populacao.\n");
+    }
+
+    else
+    {
+            printf("Cidade 2 tem maior populacao.\n");
+    }
+    
+    
+
+
+
+
+
+
+return 0;
+
+
+
+
+
+}
